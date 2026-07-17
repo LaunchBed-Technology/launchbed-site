@@ -1,0 +1,46 @@
+---
+export interface Project {
+  title: string;
+  shortDesc: string;
+  fullDesc: string;
+  tags: string[];
+  link?: string;
+}
+
+const { project, index } = Astro.props as { project: Project; index: number };
+---
+
+<div
+  class="group cursor-pointer rounded-2xl border border-zinc-200 bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-md"
+  data-project-id={index}
+>
+  <div class="mb-4 h-48 rounded-lg bg-gradient-to-br from-zinc-100 to-zinc-200" />
+
+  <h3 class="mb-2 text-xl font-semibold">{project.title}</h3>
+  <p class="mb-4 text-zinc-600">{project.shortDesc}</p>
+
+  <div class="mb-4 flex flex-wrap gap-2">
+    {project.tags.map((tag) => (
+      <span class="rounded-full bg-zinc-100 px-3 py-1 text-xs font-medium text-zinc-600">{tag}</span>
+    ))}
+  </div>
+
+  <div class="flex items-center gap-3">
+    <button
+      class="cursor-pointer rounded-lg bg-zinc-900 px-4 py-2 text-sm font-medium text-white transition hover:bg-zinc-700"
+      data-open-detail={index}
+    >
+      Ver detalle
+    </button>
+    {project.link && (
+      <a
+        href={project.link}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="rounded-lg border border-zinc-300 px-4 py-2 text-sm font-medium transition hover:bg-zinc-100"
+      >
+        Visitar sitio
+      </a>
+    )}
+  </div>
+</div>
