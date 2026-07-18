@@ -5,39 +5,37 @@ import ProjectCard from "../components/ProjectCard.astro";
 
 import Logo from "../assets/launchbed_purple.png";
 import HeaderBG from "../assets/header_bg.jpg";
+import GYM24 from "../assets/clone-gym.png";
+import Restaurant from "../assets/restaurant.png";
+import InflablesReyPark from "../assets/inflables-reypark.com.png";
 
 const projects = [
   {
-    title: "TechFlow",
+    title: "Inflables Rey Park",
+    image: InflablesReyPark,
     shortDesc:
-      "Plataforma SaaS con panel de administración y landing page conversional.",
+      "Plataforma de alquiler de inflables con catálogo, reservas y panel de administración.",
     fullDesc:
-      "Desarrollamos una plataforma SaaS completa con landing page optimizada para conversiones, panel de administración intuitivo y una experiencia de usuario fluida. El diseño minimalista y las animaciones sutiles mejoran la retención de usuarios.",
-    tags: ["Landing Page", "SaaS", "React"],
-    link: "https://ejemplo.com/techflow",
+      "Plataforma web completa para la gestión de alquiler de inflables, con catálogo de productos, sistema de reservas en línea y panel de administración para gestionar solicitudes y juegos inflables. Diseño atractivo y funcional que facilita la experiencia del usuario.",
+    tags: ["Sistema Web", "Alquiler", "Laravel"],
+    link: "https://inflables-reypark.com",
   },
   {
-    title: "GreenLeaf Organics",
-    shortDesc: "Sitio web corporativo para marca de productos orgánicos.",
+    title: "Restaurant",
+    image: Restaurant,
+    shortDesc: "Landing page para un restaurante ficticio con diseño moderno.",
     fullDesc:
-      "Sitio web corporativo con catálogo de productos, blog de recetas saludables y tienda online integrada. Diseño fresco y natural que refleja los valores de la marca.",
-    tags: ["Sitio Web", "Ecommerce", "WordPress"],
+      "Landing page atractiva para un restaurante ficticio, con secciones de testimonios y formulario de contacto. Diseño responsivo y optimizado para SEO.",
+    tags: ["Landing Page", "Restaurante", "Astro"],
   },
   {
-    title: "FitHub Pro",
+    title: "GYM24",
+    image: GYM24,
     shortDesc:
-      "Landing page para aplicación de fitness con registro e información.",
+      "Landing page para un gimnasio con secciones de características y planes de precios.",
     fullDesc:
-      "Landing page moderna con secciones de características, planes de precios, testimonios y formulario de registro. Optimizada para SEO y carga rápida en dispositivos móviles.",
-    tags: ["Landing Page", "Fitness", "Next.js"],
-    link: "https://ejemplo.com/fithub",
-  },
-  {
-    title: "Studio Noir",
-    shortDesc: "Portfolio interactivo para estudio de producción audiovisual.",
-    fullDesc:
-      "Portfolio interactivo con galería de proyectos, reproductor de video integrado y animaciones cinematográficas. Experiencia inmersiva que destaca el trabajo creativo del estudio.",
-    tags: ["Sitio Web", "Portfolio", "Astro"],
+      "Landing page moderna para un gimnasio, con secciones de características, planes de precios, entrenadores y formulario de contacto. Optimizada para SEO y carga rápida en dispositivos móviles.",
+    tags: ["Landing Page", "Fitness", "Astro"],
   },
 ];
 ---
@@ -116,24 +114,26 @@ const projects = [
       </p>
       <div class="grid gap-8 md:grid-cols-2">
         <div
-          class="rounded-2xl border border-zinc-200 p-8 text-center transition hover:shadow-md"
+          class="rounded-2xl border border-primary p-8 text-center transition hover:shadow-md"
         >
           <div
-            class="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-xl bg-violet-100"
+            class="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-xl bg-primary text-white"
           >
             <svg
-              class="h-8 w-8 text-violet-600"
-              fill="none"
+              width="30"
+              height="30"
               viewBox="0 0 24 24"
+              fill="none"
               stroke="currentColor"
-              stroke-width="1.5"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="icon icon-tabler icons-tabler-outline icon-tabler-device-imac"
+              ><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path
+                d="M3 4a1 1 0 0 1 1 -1h16a1 1 0 0 1 1 1v12a1 1 0 0 1 -1 1h-16a1 1 0 0 1 -1 -1v-12"
+              ></path><path d="M3 13h18"></path><path d="M8 21h8"></path><path
+                d="M10 17l-.5 4"></path><path d="M14 17l.5 4"></path></svg
             >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                d="M9 17.25v1.007a3 3 0 0 1-.879 2.122L7.5 21h9l-.621-.621A3 3 0 0 1 15 18.257V17.25m6-12V15a2.25 2.25 0 0 1-2.25 2.25H5.25A2.25 2.25 0 0 1 3 15V5.25m18 0A2.25 2.25 0 0 0 18.75 3H5.25A2.25 2.25 0 0 0 3 5.25m18 0V12a2.25 2.25 0 0 1-2.25 2.25H5.25A2.25 2.25 0 0 1 3 12V5.25"
-              ></path>
-            </svg>
           </div>
           <h3 class="mb-2 text-xl font-semibold">Landing Pages</h3>
           <p class="text-zinc-600">
@@ -142,24 +142,27 @@ const projects = [
           </p>
         </div>
         <div
-          class="rounded-2xl border border-zinc-200 p-8 text-center transition hover:shadow-md"
+          class="rounded-2xl border border-primary p-8 text-center transition hover:shadow-md"
         >
           <div
-            class="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-xl bg-sky-100"
+            class="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-xl bg-primary text-white"
           >
             <svg
-              class="h-8 w-8 text-sky-600"
-              fill="none"
+              width="30"
+              height="30"
               viewBox="0 0 24 24"
+              fill="none"
               stroke="currentColor"
-              stroke-width="1.5"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="icon icon-tabler icons-tabler-outline icon-tabler-world"
+              ><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path
+                d="M3 12a9 9 0 1 0 18 0a9 9 0 0 0 -18 0"></path><path
+                d="M3.6 9h16.8"></path><path d="M3.6 15h16.8"></path><path
+                d="M11.5 3a17 17 0 0 0 0 18"></path><path
+                d="M12.5 3a17 17 0 0 1 0 18"></path></svg
             >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z"
-              ></path>
-            </svg>
           </div>
           <h3 class="mb-2 text-xl font-semibold">Sitios Web</h3>
           <p class="text-zinc-600">
