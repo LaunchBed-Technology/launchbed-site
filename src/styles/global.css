@@ -2,6 +2,7 @@
 
 @theme {
   --color-primary: #4d0d80;
+  --color-primary-hover: #3a0a60;
 }
 
 html {
