@@ -4,6 +4,7 @@ import Layout from "../layouts/Layout.astro";
 import ProjectCard from "../components/ProjectCard.astro";
 
 import Logo from "../assets/launchbed_purple.png";
+import HeaderBG from "../assets/header_bg.jpg";
 
 const projects = [
   {
@@ -75,34 +76,32 @@ const projects = [
   <section
     class="relative flex min-h-screen flex-col items-center justify-center overflow-hidden px-6 pt-20 text-center"
   >
-    <div
-      class="absolute -top-40 -right-40 h-96 w-96 rounded-full bg-gradient-to-br from-violet-200 to-transparent opacity-60"
-    >
-    </div>
-    <div
-      class="absolute -bottom-40 -left-40 h-96 w-96 rounded-full bg-gradient-to-tr from-sky-200 to-transparent opacity-60"
-    >
-    </div>
+    <Image
+      src={HeaderBG}
+      alt="Fondo de tecnología"
+      class="absolute inset-0 -z-10 h-full w-full object-cover"
+    />
+    <div class="absolute inset-0 -z-10 bg-black/50"></div>
 
     <h1
-      class="relative mb-4 text-5xl font-bold tracking-tight sm:text-6xl lg:text-7xl"
+      class="relative mb-4 text-5xl font-bold tracking-tight sm:text-6xl lg:text-7xl text-white"
     >
       Launchbed Technology
     </h1>
-    <p class="relative mb-8 max-w-xl text-lg text-zinc-600">
+    <p class="relative mb-8 max-w-xl text-lg text-gray-200">
       Creamos landing pages y sitios web modernos, rápidos y optimizados para tu
       negocio.
     </p>
     <div class="relative flex flex-wrap justify-center gap-4">
       <a
         href="#contacto"
-        class="rounded-xl bg-zinc-900 px-6 py-3 text-sm font-medium text-white transition hover:bg-zinc-700"
+        class="rounded-xl bg-primary px-6 py-3 text-sm font-medium text-white transition hover:bg-primary-hover"
       >
         Contáctanos
       </a>
       <a
         href="#proyectos"
-        class="rounded-xl border border-zinc-300 px-6 py-3 text-sm font-medium transition hover:bg-zinc-100"
+        class="rounded-xl border border-zinc-300 text-gray-200 px-6 py-3 text-sm font-medium transition hover:bg-zinc-100 hover:text-zinc-700"
       >
         Ver proyectos
       </a>
