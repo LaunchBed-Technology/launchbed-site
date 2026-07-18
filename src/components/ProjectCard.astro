@@ -14,7 +14,7 @@ const { project, index } = Astro.props as { project: Project; index: number };
 ---
 
 <div
-  class="group cursor-pointer rounded-2xl border border-zinc-200 bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-md"
+  class="group cursor-pointer rounded-2xl border border-primary bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-md"
   data-project-id={index}
 >
   <div class="mb-4 h-48 rounded-lg bg-linear-to-br from-zinc-100 to-zinc-200">
@@ -40,7 +40,7 @@ const { project, index } = Astro.props as { project: Project; index: number };
 
   <div class="flex items-center gap-3">
     <button
-      class="cursor-pointer rounded-lg bg-zinc-900 px-4 py-2 text-sm font-medium text-white transition hover:bg-zinc-700"
+      class="cursor-pointer rounded-lg bg-primary px-4 py-2 text-sm font-medium text-white transition hover:bg-primary-hover"
       data-open-detail={index}
     >
       Ver detalle
