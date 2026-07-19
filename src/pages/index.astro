@@ -1,43 +1,14 @@
 ---
+import { getCollection } from "astro:content";
 import { Image } from "astro:assets";
 import Layout from "../layouts/Layout.astro";
 import ProjectCard from "../components/ProjectCard.astro";
 
 import Logo from "../assets/launchbed_purple.png";
 import HeaderBG from "../assets/header_bg.jpg";
-import GYM24 from "../assets/clone-gym.png";
-import Restaurant from "../assets/restaurant.png";
-import InflablesReyPark from "../assets/inflables-reypark.com.png";
 
-const projects = [
-  {
-    title: "Inflables Rey Park",
-    image: InflablesReyPark,
-    shortDesc:
-      "Plataforma de alquiler de inflables con catálogo, reservas y panel de administración.",
-    fullDesc:
-      "Plataforma web completa para la gestión de alquiler de inflables, con catálogo de productos, sistema de reservas en línea y panel de administración para gestionar solicitudes y juegos inflables. Diseño atractivo y funcional que facilita la experiencia del usuario.",
-    tags: ["Sistema Web", "Alquiler", "Laravel"],
-    link: "https://inflables-reypark.com",
-  },
-  {
-    title: "Restaurant",
-    image: Restaurant,
-    shortDesc: "Landing page para un restaurante ficticio con diseño moderno.",
-    fullDesc:
-      "Landing page atractiva para un restaurante ficticio, con secciones de testimonios y formulario de contacto. Diseño responsivo y optimizado para SEO.",
-    tags: ["Landing Page", "Restaurante", "Astro"],
-  },
-  {
-    title: "GYM24",
-    image: GYM24,
-    shortDesc:
-      "Landing page para un gimnasio con secciones de características y planes de precios.",
-    fullDesc:
-      "Landing page moderna para un gimnasio, con secciones de características, planes de precios, entrenadores y formulario de contacto. Optimizada para SEO y carga rápida en dispositivos móviles.",
-    tags: ["Landing Page", "Fitness", "Astro"],
-  },
-];
+const projects = await getCollection("projects");
+projects.sort((a, b) => a.data.order - b.data.order);
 ---
 
 <Layout>
@@ -181,11 +152,7 @@ const projects = [
         Algunos de los proyectos que hemos realizado.
       </p>
       <div class="grid gap-8 sm:grid-cols-2 lg:grid-cols-2">
-        {
-          projects.map((project, i) => (
-            <ProjectCard project={project} index={i} />
-          ))
-        }
+        {projects.map((project) => <ProjectCard project={project} />)}
       </div>
     </div>
   </section>
@@ -240,91 +207,4 @@ const projects = [
   >
     &copy; {new Date().getFullYear()} Launchbed Technology. Todos los derechos reservados.
   </footer>
-
-  <!-- Detail Modal -->
-  <!-- <dialog
-    id="detail-modal"
-    class="fixed inset-0 z-50 flex h-full w-full items-center justify-center bg-transparent p-4 backdrop:bg-black/50 open:flex"
-  >
-    <div class="max-h-[80vh] w-full max-w-lg overflow-y-auto rounded-2xl bg-white p-8 shadow-2xl">
-      <div class="mb-4 h-48 rounded-lg bg-gradient-to-br from-zinc-100 to-zinc-200" />
-
-      <h3 id="modal-title" class="mb-2 text-2xl font-bold"></h3>
-
-      <div id="modal-tags" class="mb-4 flex flex-wrap gap-2"></div>
-
-      <p id="modal-desc" class="mb-6 text-zinc-600 leading-relaxed"></p>
-
-      <div id="modal-link" class="mb-6"></div>
-
-      <button
-        id="modal-close"
-        class="cursor-pointer rounded-lg bg-zinc-900 px-6 py-2 text-sm font-medium text-white transition hover:bg-zinc-700"
-      >
-        Cerrar
-      </button>
-    </div>
-  </dialog> -->
 </Layout>
-
-<script>
-  const projectsData = [
-    {
-      title: "Inflables Rey Park",
-      fullDesc:
-        "Plataforma web completa para la gestión de alquiler de inflables, con catálogo de productos, sistema de reservas en línea y panel de administración para gestionar solicitudes y juegos inflables. Diseño atractivo y funcional que facilita la experiencia del usuario.",
-      tags: ["Sistema Web", "Alquiler", "Laravel"],
-      link: "https://inflables-reypark.com",
-    },
-    {
-      title: "Restaurant",
-      fullDesc:
-        "Landing page atractiva para un restaurante ficticio, con secciones de testimonios y formulario de contacto. Diseño responsivo y optimizado para SEO.",
-      tags: ["Landing Page", "Restaurante", "Astro"],
-    },
-    {
-      title: "GYM24",
-      fullDesc:
-        "Landing page moderna para un gimnasio, con secciones de características, planes de precios, entrenadores y formulario de contacto. Optimizada para SEO y carga rápida en dispositivos móviles.",
-      tags: ["Landing Page", "Fitness", "Astro"],
-    },
-  ];
-
-  const modal = document.getElementById("detail-modal");
-  const modalTitle = document.getElementById("modal-title");
-  const modalDesc = document.getElementById("modal-desc");
-  const modalTags = document.getElementById("modal-tags");
-  const modalLink = document.getElementById("modal-link");
-  const modalClose = document.getElementById("modal-close");
-
-  document.querySelectorAll("[data-open-detail]").forEach((btn) => {
-    btn.addEventListener("click", () => {
-      const index = Number(btn.dataset.openDetail);
-      const project = projectsData[index];
-      if (!project) return;
-
-      modalTitle.textContent = project.title;
-      modalDesc.textContent = project.fullDesc;
-      modalTags.innerHTML = project.tags
-        .map(
-          (t) =>
-            `<span class="rounded-full bg-zinc-100 px-3 py-1 text-xs font-medium text-zinc-600">${t}</span>`,
-        )
-        .join("");
-
-      if (project.link) {
-        modalLink.innerHTML = `<a href="${project.link}" target="_blank" rel="noopener noreferrer" class="inline-block rounded-lg border border-zinc-300 px-4 py-2 text-sm font-medium transition hover:bg-zinc-100">Visitar sitio web</a>`;
-      } else {
-        modalLink.innerHTML = "";
-      }
-
-      modal.showModal();
-    });
-  });
-
-  modalClose.addEventListener("click", () => modal.close());
-
-  modal.addEventListener("click", (e) => {
-    if (e.target === modal) modal.close();
-  });
-</script>
